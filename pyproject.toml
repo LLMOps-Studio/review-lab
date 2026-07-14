@@ -1,0 +1,47 @@
+[project]
+name = "review-lab"
+version = "0.1.0"
+description = "LLMOps laboratory for multi-agent code review using LangGraph."
+requires-python = ">=3.11"
+authors = [
+  { name = "Muhammet Ali Varlik", email = "iletisim.muhammetalivarlik@gmail.com" }
+]
+
+dependencies = [
+  "python-dotenv",
+  "requests",
+  "langchain>=0.3,<0.4",
+  "langchain-core>=0.3,<0.4",
+  "langchain-ollama>=0.1.0",
+  "langgraph>=0.2,<0.3",
+  "fastapi",
+  "uvicorn",
+  "langfuse>=2.0.0",
+  "pylint",
+  "bandit",
+  "streamlit>=1.32.0",
+  "llmops-common"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "ruff",
+  "black",
+  "mypy"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
