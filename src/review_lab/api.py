@@ -29,6 +29,11 @@ app.add_middleware(
 # Initialize the LangGraph workflow
 review_graph = build_review_graph()
 
+@app.get("/health")
+def health_check():
+    """Confirms the laboratory API is up and running."""
+    return {"status": "healthy", "service": "review-lab"}
+
 class ReviewRequest(BaseModel):
     code_snippet: str
     pr_url: str | None = None
