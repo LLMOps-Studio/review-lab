@@ -32,7 +32,7 @@ clean:
 
 run-api:
 	@echo "Starting FastAPI server..."
-	micromamba run -n $(ENV_NAME) uvicorn review_lab.api:app --reload --port 8081
+	micromamba run -n $(ENV_NAME) uvicorn review_lab.api:app --reload --port 8005
 
 run-ui:
 	@echo "Starting Streamlit UI..."
