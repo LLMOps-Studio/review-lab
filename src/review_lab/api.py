@@ -4,6 +4,7 @@ from fastapi import FastAPI, Request, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from langfuse.langchain import CallbackHandler
+from llmops_common.observability.instrumentation import instrument_app
 
 from review_lab.agents.graph import build_review_graph
 
@@ -11,6 +12,7 @@ app = FastAPI(
     title="Review Lab - Multi-Agent AI Code Reviewer",
     description="LangGraph powered supervisor agent for automated PR reviews."
 )
+instrument_app(app)
 
 # FIX: CORS middleware was missing entirely -- the browser blocks any
 # cross-origin request without it, so the Review Lab tab in the UI
