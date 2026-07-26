@@ -8,6 +8,12 @@ from review_lab.api import app
 client = TestClient(app)
 
 
+def test_health_check():
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.json() == {"status": "healthy", "service": "review-lab"}
+
+
 def test_review_missing_code_snippet_returns_422():
     """The request body requires code_snippet; omitting it should fail validation, not 500."""
     response = client.post("/review", json={})
